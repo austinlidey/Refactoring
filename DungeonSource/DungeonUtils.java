@@ -52,11 +52,11 @@ a polymorphic reference (Monster) to accomplish this task.
 
 		switch(choice)
 		{
-			case 1: monsterFac.createOgre();
+			case 1: return monsterFac.createOgre();
 
-			case 2: monsterFac.createGremlin();
+			case 2: return monsterFac.createGremlin();
 
-			case 3: monsterFac.createSkeleton();
+			case 3: return monsterFac.createSkeleton();
 
 			default: System.out.println("invalid choice, returning Skeleton");
 				     return monsterFac.createSkeleton();
@@ -106,7 +106,7 @@ REFACTOR: deleted static (by Mia) 05/22/2020
 		while (theHero.isAlive() && theMonster.isAlive() && pause != 'q')
 		{
 		    //hero goes first
-			theHero.battleChoices(theMonster);
+			theHero.battleChoices(theMonster, kb);
 
 			//monster's turn (provided it's still alive!)
 			if (theMonster.isAlive())
