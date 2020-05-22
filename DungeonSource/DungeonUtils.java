@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class DungeonUtils {
 
@@ -7,16 +8,16 @@ chooseHero allows the user to select a hero, creates that hero, and
 returns it.  It utilizes a polymorphic reference (Hero) to accomplish
 this task
 ---------------------------------------------------------------------*/
-	public static Hero chooseHero()
+	public static Hero chooseHero(Scanner kb)
 	{
 		int choice;
-		Hero theHero;
+//		Hero theHero; no longer necessary due to scanner
 
 		System.out.println("Choose a hero:\n" +
 					       "1. Warrior\n" +
 						   "2. Sorceress\n" +
 						   "3. Thief");
-		choice = Keyboard.readInt();
+		choice = Integer.parseInt(kb.nextLine()); //changed to use Scanner
 
 		switch(choice)
 		{
@@ -58,12 +59,12 @@ a polymorphic reference (Monster) to accomplish this task.
 playAgain allows gets choice from user to play another game.  It returns
 true if the user chooses to continue, false otherwise.
 ---------------------------------------------------------------------*/
-	public static boolean playAgain()
+	public static boolean playAgain(Scanner kb)
 	{
 		char again;
 
 		System.out.println("Play again (y/n)?");
-		again = Keyboard.readChar();
+		again = kb.nextLine().charAt(0);
 
 		return (again == 'Y' || again == 'y');
 	}//end playAgain method
@@ -75,7 +76,7 @@ and a Monster to be passed in.  Battle occurs in rounds.  The Hero
 goes first, then the Monster.  At the conclusion of each round, the
 user has the option of quitting.
 ---------------------------------------------------------------------*/
-	public static void battle(Hero theHero, Monster theMonster)
+	public static void battle(Hero theHero, Monster theMonster, Scanner kb)
 	{
 		char pause = 'p';
 		System.out.println(theHero.getName() + " battles " +
@@ -94,7 +95,7 @@ user has the option of quitting.
 
 			//let the player bail out if desired
 			System.out.print("\n-->q to quit, anything else to continue: ");
-			pause = Keyboard.readChar();
+			pause = kb.nextLine().charAt(0);
 
 		}//end battle loop
 

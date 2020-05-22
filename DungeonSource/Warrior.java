@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title:
@@ -51,7 +51,7 @@ public class Warrior extends Hero
 
 
 
-    public void battleChoices(DungeonCharacter opponent)
+    public void battleChoices(DungeonCharacter opponent, Scanner kb)
 	{
 		int choice;
 
@@ -62,7 +62,7 @@ public class Warrior extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Crushing Blow on Opponent");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = Integer.parseInt(kb.nextLine());
 
 		    switch (choice)
 		    {
