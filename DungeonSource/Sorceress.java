@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title:
@@ -47,7 +47,7 @@ public class Sorceress extends Hero
 	}//end override of attack method
 
 //-----------------------------------------------------------------
-    public void battleChoices(DungeonCharacter opponent)
+    public void battleChoices(DungeonCharacter opponent, Scanner kb)
 	{
 		super.battleChoices(opponent);
 		int choice;
@@ -57,7 +57,7 @@ public class Sorceress extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Increase Hit Points");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = Integer.parseInt(kb.nextLine());
 
 		    switch (choice)
 		    {
