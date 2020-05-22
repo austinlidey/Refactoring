@@ -30,7 +30,7 @@
  * version 1.0
  */
 
-
+import java.util.Scanner;
 
 /*
   This class is the driver file for the Heroes and Monsters project.  It will
@@ -50,15 +50,19 @@ public class Dungeon
 
 		Hero theHero;
 		Monster theMonster;
+		Scanner kb = new Scanner(System.in);
 
 		do
 		{
-		    theHero = DungeonUtils.chooseHero();
+		    theHero = DungeonUtils.chooseHero(kb);
+		    System.out.println("Enter a character name: ");
+		    theHero.name = kb.nextLine();
 		    theMonster = DungeonUtils.generateMonster();
-		    DungeonUtils.battle(theHero, theMonster);
+		    DungeonUtils.battle(theHero, theMonster, kb);
 
-		} while (DungeonUtils.playAgain());
+		} while (DungeonUtils.playAgain(kb));
 
+		kb.close();
     }//end main method
 
 

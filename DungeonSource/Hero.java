@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title: Hero.java
@@ -43,10 +43,14 @@ public abstract class Hero extends DungeonCharacter
 	this.chanceToBlock = chanceToBlock;
   }
 
-// REFACTOR: setName sets name of the hero.
+/*------------------------------------------------------
+REFACTOR: setName sets name of the hero.
+-------------------------------------------------------*/
+
 public void setName(String name) {
 	this.name = name;
 }
+
 /*-------------------------------------------------------
 defend determines if hero blocks attack
 
@@ -110,5 +114,10 @@ This method is called by: external sources
 		System.out.println("Number of turns this round is: " + numTurns);
 
 	}//end battleChoices
+	
+	public void battleChoices(DungeonCharacter opponent, Scanner kb)
+	{
+		battleChoices(opponent);
+	}
 
 }//end Hero class

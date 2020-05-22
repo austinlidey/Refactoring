@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 /**
  * Title:
@@ -42,7 +42,7 @@ public class Thief extends Hero
 	}//end surpriseAttack method
 
 
-    public void battleChoices(DungeonCharacter opponent)
+    public void battleChoices(DungeonCharacter opponent, Scanner kb)
 	{
 		super.battleChoices(opponent);
 		int choice;
@@ -53,7 +53,7 @@ public class Thief extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+		    choice = Integer.parseInt(kb.nextLine());
 
 		    switch (choice)
 		    {

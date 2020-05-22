@@ -161,7 +161,6 @@ This method calls: Math.random(), subtractHitPoints()
 This method is called by: overridden versions of the method in monster and
 hero classes and externally
 ---------------------------------------------------------*/
-	@Override
 	public void attack(DungeonCharacter opponent)
 	{
 		boolean canAttack;
