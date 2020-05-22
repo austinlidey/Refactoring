@@ -43,6 +43,7 @@
   Once a battle concludes, the user has the option of repeating the above
 
 */
+
 public class Dungeon
 {
     public static void main(String[] args)
@@ -70,12 +71,13 @@ this task
 	{
 		int choice;
 		Hero theHero;
+		Keyboard kb = new Keyboard();
 
 		System.out.println("Choose a hero:\n" +
 					       "1. Warrior\n" +
 						   "2. Sorceress\n" +
 						   "3. Thief");
-		choice = Keyboard.readInt();
+		choice = Keyboard.nextInt();
 
 		switch(choice)
 		{
@@ -122,7 +124,7 @@ true if the user chooses to continue, false otherwise.
 		char again;
 
 		System.out.println("Play again (y/n)?");
-		again = Keyboard.readChar();
+		again = Keyboard.nextChar();
 
 		return (again == 'Y' || again == 'y');
 	}//end playAgain method

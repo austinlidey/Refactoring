@@ -11,6 +11,7 @@ import java.util.*;
 
 public class Keyboard
 {
+   
    //*************  Error Handling Section  **************************
 
    private static boolean printErrors = true;
@@ -311,5 +312,5 @@ public class Keyboard
          value = Double.NaN;
       }
       return value;
-   }
+   }*/
 }

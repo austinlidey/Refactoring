@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Comparable
+public abstract class DungeonCharacter implements Comparable, Attack
 {
 
 	protected String name;
@@ -161,7 +161,8 @@ This method calls: Math.random(), subtractHitPoints()
 This method is called by: overridden versions of the method in monster and
 hero classes and externally
 ---------------------------------------------------------*/
-	public void attack(DungeonCharacter opponent)
+@Override	
+public void attack(DungeonCharacter opponent)
 	{
 		boolean canAttack;
 		int damage;
