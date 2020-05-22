@@ -55,8 +55,6 @@ public class Dungeon
 		do
 		{
 		    theHero = DungeonUtils.chooseHero(kb);
-		    System.out.println("Enter a character name: ");
-		    theHero.name = kb.nextLine();
 		    theMonster = DungeonUtils.generateMonster();
 		    DungeonUtils.battle(theHero, theMonster, kb);
 
