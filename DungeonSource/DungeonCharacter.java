@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Comparable, IAttackCharacter
+public abstract class DungeonCharacter implements Comparable
 {
 
 	protected String name;

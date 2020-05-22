@@ -41,24 +41,12 @@ public abstract class Hero extends DungeonCharacter
   {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 	this.chanceToBlock = chanceToBlock;
-	readName();
   }
 
-/*-------------------------------------------------------
-readName obtains a name for the hero from the user
-
-Receives: nothing
-Returns: nothing
-
-This method calls: nothing
-This method is called by: hero constructor
----------------------------------------------------------*/
-  public void readName()
-  {
-		System.out.print("Enter character name: ");
-		name = Keyboard.readString();
-  }//end readName method
-
+// REFACTOR: setName sets name of the hero.
+public void setName(String name) {
+	this.name = name;
+}
 /*-------------------------------------------------------
 defend determines if hero blocks attack
 
