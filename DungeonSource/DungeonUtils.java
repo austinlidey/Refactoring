@@ -13,7 +13,7 @@ this task
 	{
 		// REFACTOR: used HeroFactory to return Hero objects.	
 		HeroFactory heroFac = new HeroFactory();
-		int choice; String name;
+		int choice; String name, buffer;
 		// REFACTOR: no longer necessary due to scanner
 		// Hero theHero; 
 
@@ -23,21 +23,40 @@ this task
 						   "3. Thief\n" +
 						   "--> ");
 		choice = Integer.parseInt(kb.nextLine()); //changed to use Scanner
-		System.out.print("Enter a character name: ");
-		name = kb.nextLine();
 		switch(choice)
 		{
-			case 1: return heroFac.createWarrior(name);
+			case 1: 
+				name = getInputName(kb);
+				System.out.println("A warrior named " + name + " has been created.");
+				return heroFac.createWarrior(name);
 
-			case 2: return heroFac.createSorceress(name);
+			case 2: 
+				name = getInputName(kb);
+				System.out.println("A sorceress named " + name + " has been created.");
+				return heroFac.createSorceress(name);
 
-			case 3: return heroFac.createThief(name);
+			case 3:
+				name = getInputName(kb); 
+				System.out.println("A thief named " + name + " has been created.");
+				return heroFac.createThief(name);
 
-			default: System.out.println("invalid choice, returning Thief");
-				     return heroFac.createThief(name);
+			default: 
+				System.out.println("Invalid choice. Returning theif.");
+				name = getInputName(kb);
+				System.out.println("A thief named " + name + " has been created.");
+				return heroFac.createThief(name);
 		}//end switch
 	}//end chooseHero method
-
+/*-------------------------------------------------------------------
+REFACTOR: created getInputName(Scanner kb) to reduce code 
+duplication. This prints a prompt for user to enter a hero name,returns 
+a String name which will be input into a HeroFactory create method to set the name of 
+the Hero object. (by Mia Hunt) 05/22/2020
+---------------------------------------------------------------------*/
+	public String getInputName(Scanner kb) {
+		System.out.print("Enter a character name: ");
+		return kb.nextLine();
+	}	
 /*-------------------------------------------------------------------
 generateMonster randomly selects a Monster and returns it.  It utilizes
 a polymorphic reference (Monster) to accomplish this task.
@@ -114,7 +133,7 @@ REFACTOR: deleted static (by Mia) 05/22/2020
 
 			//let the player bail out if desired
 			System.out.print("\n-->q to quit, anything else to continue: ");
-			pause = kb.nextLine().charAt(0);
+			pause = kb.nextLine().charAt(0); // ISSUE: is not looping
 
 		}//end battle loop
 
