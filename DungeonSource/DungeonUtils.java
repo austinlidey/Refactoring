@@ -9,30 +9,32 @@ chooseHero allows the user to select a hero, creates that hero, and
 returns it.  It utilizes a polymorphic reference (Hero) to accomplish
 this task
 ---------------------------------------------------------------------*/
-	public static Hero chooseHero(Scanner kb)
+	public Hero chooseHero(Scanner kb)
 	{
 		// REFACTOR: used HeroFactory to return Hero objects.	
 		HeroFactory heroFac = new HeroFactory();
-		int choice;
-		// Hero theHero; no longer necessary due to scanner
+		int choice; String name;
+		// REFACTOR: no longer necessary due to scanner
+		// Hero theHero; 
 
-		System.out.println("Choose a hero:\n" +
+		System.out.print("Choose a hero:\n" +
 					       "1. Warrior\n" +
 						   "2. Sorceress\n" +
-						   "3. Thief");
+						   "3. Thief\n" +
+						   "--> ");
 		choice = Integer.parseInt(kb.nextLine()); //changed to use Scanner
-		System.out.println("Enter a character name: ");
-		String name = kb.nextLine();
+		System.out.print("Enter a character name: ");
+		name = kb.nextLine();
 		switch(choice)
 		{
-			case 1: heroFac.createWarrior(name);
+			case 1: return heroFac.createWarrior(name);
 
-			case 2: heroFac.createSorceress(name);
+			case 2: return heroFac.createSorceress(name);
 
-			case 3: heroFac.createThief(name);
+			case 3: return heroFac.createThief(name);
 
 			default: System.out.println("invalid choice, returning Thief");
-				     return new Thief();
+				     return heroFac.createThief(name);
 		}//end switch
 	}//end chooseHero method
 
@@ -40,13 +42,13 @@ this task
 generateMonster randomly selects a Monster and returns it.  It utilizes
 a polymorphic reference (Monster) to accomplish this task.
 ---------------------------------------------------------------------*/
-	public static Monster generateMonster()
+	public Monster generateMonster()
 	{
 		// REFACTOR: used MonsterFactory to return Monster objects.
 		MonsterFactory monsterFac = new MonsterFactory();
 		int choice;
 
-		choice = (int)(Math.random() * 3) + 1;
+		choice = (int)((Math.random() * 3) + 1);
 
 		switch(choice)
 		{
@@ -57,7 +59,7 @@ a polymorphic reference (Monster) to accomplish this task.
 			case 3: monsterFac.createSkeleton();
 
 			default: System.out.println("invalid choice, returning Skeleton");
-				     return new Skeleton();
+				     return monsterFac.createSkeleton();
 		}//end switch
 	}//end generateMonster method
 
@@ -65,11 +67,11 @@ a polymorphic reference (Monster) to accomplish this task.
 playAgain allows gets choice from user to play another game.  It returns
 true if the user chooses to continue, false otherwise.
 ---------------------------------------------------------------------*/
-	public static boolean playAgain(Scanner kb)
+	public boolean playAgain(Scanner kb)
 	{
 		char again;
 
-		System.out.println("Play again (y/n)?");
+		System.out.print("Play again (y/n)?\n-->");
 		again = kb.nextLine().charAt(0);
 
 		return (again == 'Y' || again == 'y');
@@ -82,8 +84,19 @@ and a Monster to be passed in.  Battle occurs in rounds.  The Hero
 goes first, then the Monster.  At the conclusion of each round, the
 user has the option of quitting.
 ---------------------------------------------------------------------*/
-	public static void battle(Hero theHero, Monster theMonster, Scanner kb)
-	{
+/*--------------------------------------------------------------------
+REFACTOR: deleted static (by Mia) 05/22/2020
+--------------------------------------------------------------------*/
+	public void battle(Scanner kb)
+	{	
+		/*---------------------------------------------------------
+		REFACTOR: chose to create instances of Hero and monster in this 
+		method instead of having it created in main method. (by Mia)
+		05/22/2020
+		---------------------------------------------------------*/
+		Hero theHero = chooseHero(kb);
+		Monster theMonster = generateMonster();
+
 		char pause = 'p';
 		System.out.println(theHero.getName() + " battles " +
 							theMonster.getName());

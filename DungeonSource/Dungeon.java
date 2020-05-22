@@ -28,6 +28,8 @@
  *    --added game play features to Dungeon.java (this file)
  *  11/27/2001: Finished documenting program
  * version 1.0
+ * @RefactorAuthors: Mia Hunt, Nick Savoie, Austin Lidey
+ * @since 05-17-2020
  */
 
 import java.util.Scanner;
@@ -48,17 +50,39 @@ public class Dungeon
     public static void main(String[] args)
 	{
 
-		Hero theHero;
-		Monster theMonster;
+		/*--------------------------------------
+		REFACTOR: removed instantiation of Hero 
+		Monster into the DungeonUtils class to 
+		create a cleaner looking and simpler
+		implementation of the main class.
+		(by Mia Hunt) 05/22/2020
+		----------------------------------------*/
+
+		// Hero theHero;
+		// Monster theMonster;
+		
+		DungeonUtils dungeon = new DungeonUtils();
+		/*--------------------------------------
+		REFACTOR: replaced Keyboard class with 
+		Scanner class which is more current.
+		(by Nick Savoie) 05/22/2020
+		----------------------------------------*/
 		Scanner kb = new Scanner(System.in);
 
+		/*--------------------------------------
+		REFACTOR: consolidated Hero and Monster
+		instantiation into DungeonUtils.battle().
+		(by Mia Hunt) 05/22/2020
+		----------------------------------------*/
 		do
 		{
-		    theHero = DungeonUtils.chooseHero(kb);
-		    theMonster = DungeonUtils.generateMonster();
-		    DungeonUtils.battle(theHero, theMonster, kb);
+		    // theHero = DungeonUtils.chooseHero(kb);
+		    // theMonster = DungeonUtils.generateMonster();
+			// DungeonUtils.battle(theHero, theMonster, kb);
+		
+		    dungeon.battle(kb);
 
-		} while (DungeonUtils.playAgain(kb));
+		} while (dungeon.playAgain(kb));
 
 		kb.close();
     }//end main method

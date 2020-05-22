@@ -16,7 +16,7 @@ import java.util.Scanner;
  *    public Hero(String name, int hitPoints, int attackSpeed,
 				     double chanceToHit, int damageMin, int damageMax,
 					 double chanceToBlock)
-	  public void readName()
+	  public void readName() // DELETED by Nick Savoie, Mia Hunt, Austin Lidey 
 	  public boolean defend()
 	  public void subtractHitPoints(int hitPoints)
 	  public void battleChoices(DungeonCharacter opponent)
@@ -25,6 +25,8 @@ import java.util.Scanner;
  * Company:
  * @author
  * @version 1.0
+ * @RefactorAuthors: Mia Hunt, Nick Savoie, Austin Lidey
+ * @since 05-17-2020
  */
 
 
@@ -43,9 +45,10 @@ public abstract class Hero extends DungeonCharacter
 	this.chanceToBlock = chanceToBlock;
   }
 
-/*------------------------------------------------------
-REFACTOR: setName sets name of the hero.
--------------------------------------------------------*/
+/*------------------------------------------------------------
+REFACTOR: setName sets name of the hero implemented in 
+HeroFactory for ease of name setting with user input.
+-------------------------------------------------------------*/
 
 public void setName(String name) {
 	this.name = name;

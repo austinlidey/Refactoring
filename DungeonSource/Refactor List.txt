@@ -1,0 +1,9 @@
+Refactor List
+1. created HeroFactory and MonsterFactory.
+2. deleted Keyboard class. 
+3. changed long parameter list in Hero and Monster classes. // NOT DONE
+4. created DungeonUtils class.
+5. changed instantiation of Hero and Monster, put into battle method in DungeonUtils class.
+6. deleted readName() in Hero class, added setName(String name) in Hero class.
+7. reduced clutter in Dungeon class with only main method which only calls battle( Scanner kb).
+8. 

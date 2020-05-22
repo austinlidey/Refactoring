@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter implements Comparable
+public abstract class DungeonCharacter // implements Comparable REFACTOR: removed because not used (by Mia Hunt)
 {
 
 	protected String name;
