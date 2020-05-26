@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DungeonUtils {
@@ -13,16 +14,25 @@ this task
 	{
 		// REFACTOR: used HeroFactory to return Hero objects.	
 		HeroFactory heroFac = new HeroFactory();
-		int choice; String name, buffer;
+		int choice = 0; 
+		String name, buffer;
 		// REFACTOR: no longer necessary due to scanner
 		// Hero theHero; 
 
-		System.out.print("Choose a hero:\n" +
+		do {
+			try {
+				System.out.print("Choose a hero:\n" +
 					       "1. Warrior\n" +
 						   "2. Sorceress\n" +
 						   "3. Thief\n" +
 						   "--> ");
-		choice = Integer.parseInt(kb.nextLine()); //changed to use Scanner
+				choice = kb.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input. Please enter a number not equal to 0.");
+			}
+			kb.nextLine();
+		} while (choice == 0); //forces user to input a number before instantiating a character (Nick)
+		
 		switch(choice)
 		{
 			case 1: 
@@ -90,8 +100,12 @@ true if the user chooses to continue, false otherwise.
 	{
 		char again;
 
-		System.out.print("Play again (y/n)?\n-->");
-		again = kb.nextLine().charAt(0);
+		System.out.print("If you would like to play again, please enter 'y'. Enter anything else to quit.\n-->");
+		String input = kb.nextLine();
+		if (input != null && !input.isBlank())
+			again = input.charAt(0);
+		else
+			again = 'n'; //if invalid input is entered, force valid character to continue (Nick)
 
 		return (again == 'Y' || again == 'y');
 	}//end playAgain method
@@ -133,7 +147,11 @@ REFACTOR: deleted static (by Mia) 05/22/2020
 
 			//let the player bail out if desired
 			System.out.print("\n-->q to quit, anything else to continue: ");
-			pause = kb.nextLine().charAt(0); // ISSUE: is not looping
+			String input = kb.nextLine();
+			if (input != null && !input.isBlank())
+				pause = input.charAt(0);
+			else
+				pause = 'a'; //if invalid input is entered, force valid character to continue (Nick)
 
 		}//end battle loop
 
