@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -45,7 +46,7 @@ public class Thief extends Hero
     public void battleChoices(DungeonCharacter opponent, Scanner kb)
 	{
 		super.battleChoices(opponent);
-		int choice;
+		int choice = 0;
 
 
 		do
@@ -53,7 +54,14 @@ public class Thief extends Hero
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
 		    System.out.print("Choose an option: ");
-		    choice = Integer.parseInt(kb.nextLine());
+		    do {
+				try {
+					choice = kb.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("Invalid input. Please enter a number listed.");
+				}
+				kb.nextLine();
+			} while (choice == 0); //forces user to input a number (Nick)
 
 		    switch (choice)
 		    {
